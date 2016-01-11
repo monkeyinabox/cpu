@@ -1,0 +1,867 @@
+
+doc/scripts/local_alu.c,767
+int const max_mue_memory 27,747
+char mue_memory[mue_memory29,780
+char* m 30,864
+unsigned int c 32,887
+unsigned int s 33,935
+unsigned int c_in 34,986
+int zero_test(42,1147
+int apply_zero_flag(51,1288
+int apply_overflow_flag(64,1511
+void zsflagging(78,1786
+void half_adder(90,2028
+void mu_memory_reset(114,2422
+void op_alu_reset(125,2570
+void full_adder(142,3029
+void one_complement(156,3286
+void two_complement(169,3506
+void op_add(191,3917
+void alu_op_OR(238,4860
+void alu_op_ASL(270,5460
+void alu_op_AND(303,6046
+void alu_op_ROL(343,6786
+void alu_op_EOR(376,7418
+void alu_op_LSR(413,8154
+void alu_op_ADC(440,8690
+void alu_op_CMP(519,10271
+void alu_op_DEC(541,10683
+void alu_op_SBC(576,11412
+void alu_op_INC(599,11880
+void alu(612,12192
+
+doc/scripts/localmucode.c,5050
+void cpu_6502_BRK_imp(25,598
+void cpu_6502_ORA_izx(50,1093
+void cpu_6502_ORA_zp(75,1569
+void cpu_6502_ASL_zp(101,2085
+void cpu_6502_PHP_imp(125,2521
+void cpu_6502_ORA_imm(150,3002
+void cpu_6502_ASL_imp(176,3516
+void cpu_6502_ORA_abs(201,3993
+void cpu_6502_ASL_abs(227,4512
+void cpu_6502_BPL_rel(250,4945
+void cpu_6502_ORA_izy(275,5438
+void cpu_6502_ORA_zpx(300,5929
+void cpu_6502_ASL_zpx(326,6462
+void cpu_6502_CLC_imp(349,6846
+void cpu_6502_ORA_aby(374,7337
+void cpu_6502_ORA_abx(399,7828
+void cpu_6502_ASL_abx(425,8361
+void cpu_6502_JSR_abs(453,8937
+void cpu_6502_AND_izx(478,9433
+void cpu_6502_BIT_zp(504,9938
+void cpu_6502_AND_zp(529,10413
+void cpu_6502_ROL_zp(557,10988
+void cpu_6502_PLP_imp(581,11427
+void cpu_6502_AND_imm(606,11909
+void cpu_6502_ROL_imp(634,12482
+void cpu_6502_BIT_abs(660,12988
+void cpu_6502_AND_abs(685,13466
+void cpu_6502_ROL_abs(713,14044
+void cpu_6502_BMI_rel(736,14476
+void cpu_6502_AND_izy(761,14970
+void cpu_6502_AND_zpx(786,15462
+void cpu_6502_ROL_zpx(814,16054
+void cpu_6502_SEC_imp(837,16436
+void cpu_6502_AND_aby(862,16928
+void cpu_6502_AND_abx(887,17420
+void cpu_6502_ROL_abx(915,18012
+void cpu_6502_RTI_imp(944,18622
+void cpu_6502_EOR_izx(969,19131
+void cpu_6502_EOR_zp(994,19621
+void cpu_6502_LSR_zp(1020,20133
+void cpu_6502_PHA_imp(1044,20559
+void cpu_6502_EOR_imm(1069,21054
+void cpu_6502_LSR_imp(1095,21564
+void cpu_6502_JMP_abs(1118,21950
+void cpu_6502_EOR_abs(1143,22441
+void cpu_6502_LSR_abs(1169,22956
+void cpu_6502_BVC_rel(1192,23382
+void cpu_6502_EOR_izy(1217,23889
+void cpu_6502_EOR_zpx(1242,24394
+void cpu_6502_LSR_zpx(1268,24923
+void cpu_6502_CLI_imp(1291,25319
+void cpu_6502_EOR_aby(1316,25824
+void cpu_6502_EOR_abx(1341,26329
+void cpu_6502_LSR_abx(1367,26831
+void cpu_6502_RTS_imp(1394,27374
+void cpu_6502_ADC_izx(1426,28143
+void cpu_6502_ADC_zp(1458,28879
+void cpu_6502_ROR_zp(1486,29480
+void cpu_6502_PLA_imp(1512,29977
+void cpu_6502_ADC_imm(1544,30732
+void cpu_6502_ROR_imp(1572,31331
+void cpu_6502_JMP_ind(1595,31726
+void cpu_6502_ADC_abs(1627,32477
+void cpu_6502_ROR_abs(1655,33081
+void cpu_6502_BVS_rel(1678,33505
+void cpu_6502_ADC_izy(1710,34272
+void cpu_6502_ADC_zpx(1742,35037
+void cpu_6502_ROR_zpx(1770,35655
+void cpu_6502_SEI_imp(1793,36049
+void cpu_6502_ADC_aby(1825,36814
+void cpu_6502_ADC_abx(1857,37579
+void cpu_6502_ROR_abx(1885,38197
+void cpu_6502_STA_izx(1908,38612
+void cpu_6502_STY_zp(1931,38999
+void cpu_6502_STA_zp(1954,39393
+void cpu_6502_STX_zp(1977,39778
+void cpu_6502_DEY_imp(2002,40242
+void cpu_6502_TXA_imp(2027,40707
+void cpu_6502_STY_abs(2050,41095
+void cpu_6502_STA_abs(2073,41492
+void cpu_6502_STX_abs(2096,41880
+void cpu_6502_BCC_rel(2119,42303
+void cpu_6502_STA_izy(2142,42716
+void cpu_6502_STY_zpx(2165,43118
+void cpu_6502_STA_zpx(2188,43529
+void cpu_6502_STX_zpy(2211,43931
+void cpu_6502_TYA_imp(2232,44283
+void cpu_6502_STA_aby(2255,44694
+void cpu_6502_TXS_imp(2278,45093
+void cpu_6502_STA_abx(2301,45504
+void cpu_6502_LDY_imm(2326,45962
+void cpu_6502_LDA_izx(2351,46445
+void cpu_6502_LDX_imm(2376,46897
+void cpu_6502_LDY_zp(2401,47350
+void cpu_6502_LDA_zp(2426,47812
+void cpu_6502_LDX_zp(2451,48257
+void cpu_6502_TAY_imp(2476,48720
+void cpu_6502_LDA_imm(2501,49189
+void cpu_6502_TAX_imp(2526,49654
+void cpu_6502_LDY_abs(2551,50108
+void cpu_6502_LDA_abs(2576,50573
+void cpu_6502_LDX_abs(2601,51021
+void cpu_6502_BCS_rel(2624,51442
+void cpu_6502_LDA_izy(2649,51923
+void cpu_6502_LDY_zpx(2674,52391
+void cpu_6502_LDA_zpx(2699,52870
+void cpu_6502_LDX_zpy(2724,53332
+void cpu_6502_CLV_imp(2747,53719
+void cpu_6502_LDA_aby(2772,54198
+void cpu_6502_TSX_imp(2797,54666
+void cpu_6502_LDY_abx(2822,55134
+void cpu_6502_LDA_abx(2847,55613
+void cpu_6502_LDX_aby(2872,56075
+void cpu_6502_CPY_imm(2898,56584
+void cpu_6502_CMP_izx(2924,57119
+void cpu_6502_CPY_zp(2950,57623
+void cpu_6502_CMP_zp(2976,58137
+void cpu_6502_DEC_zp(3001,58610
+void cpu_6502_INY_imp(3026,59074
+void cpu_6502_CMP_imm(3052,59595
+void cpu_6502_DEX_imp(3077,60061
+void cpu_6502_CPY_abs(3103,60566
+void cpu_6502_CMP_abs(3129,61083
+void cpu_6502_DEC_abs(3154,61559
+void cpu_6502_BNE_rel(3177,61993
+void cpu_6502_CMP_izy(3203,62526
+void cpu_6502_CMP_zpx(3229,63057
+void cpu_6502_DEC_zpx(3254,63547
+void cpu_6502_CLD_imp(3277,63933
+void cpu_6502_CMP_aby(3303,64464
+void cpu_6502_CMP_abx(3329,64995
+void cpu_6502_DEC_abx(3354,65485
+void cpu_6502_CPX_imm(3380,65994
+void cpu_6502_SBC_izx(3412,66789
+void cpu_6502_CPX_zp(3438,67293
+void cpu_6502_SBC_zp(3470,68067
+void cpu_6502_INC_zp(3495,68540
+void cpu_6502_INX_imp(3520,69004
+void cpu_6502_SBC_imm(3552,69785
+void cpu_6502_NOP_imp(3575,70166
+void cpu_6502_CPX_abs(3601,70671
+void cpu_6502_SBC_abs(3633,71448
+void cpu_6502_INC_abs(3658,71924
+void cpu_6502_BEQ_rel(3681,72352
+void cpu_6502_SBC_izy(3713,73145
+void cpu_6502_SBC_zpx(3745,73936
+void cpu_6502_INC_zpx(3770,74426
+void cpu_6502_SED_imp(3793,74810
+void cpu_6502_SBC_aby(3825,75601
+void cpu_6502_SBC_abx(3857,76392
+void cpu_6502_INC_abx(3882,76882
+
+doc/scripts/mu-code-extract.c,4937
+void cpu_6502_illegal(16,60
+void do_ADC(20,130
+void cpu_6502_BRK_imp(46,342
+void cpu_6502_ORA_izx(57,661
+void cpu_6502_ORA_zp(63,791
+void cpu_6502_ASL_zp(69,919
+void cpu_6502_PHP_imp(75,1047
+void cpu_6502_ORA_imm(84,1228
+void cpu_6502_ASL_imp(90,1358
+void cpu_6502_ORA_abs(95,1451
+void cpu_6502_ASL_abs(101,1581
+void cpu_6502_BPL_rel(107,1711
+void cpu_6502_ORA_izy(119,2003
+void cpu_6502_ORA_zpx(125,2133
+void cpu_6502_ASL_zpx(131,2263
+void cpu_6502_CLC_imp(137,2393
+void cpu_6502_ORA_aby(143,2490
+void cpu_6502_ORA_abx(149,2620
+void cpu_6502_ASL_abx(155,2750
+void cpu_6502_JSR_abs(161,2880
+void cpu_6502_AND_izx(183,3386
+void cpu_6502_BIT_zp(189,3518
+void cpu_6502_AND_zp(195,3646
+void cpu_6502_ROL_zp(201,3774
+void cpu_6502_PLP_imp(207,3902
+void cpu_6502_AND_imm(214,4100
+void cpu_6502_ROL_imp(220,4230
+void cpu_6502_BIT_abs(225,4323
+void cpu_6502_AND_abs(231,4453
+void cpu_6502_ROL_abs(237,4583
+void cpu_6502_BMI_rel(243,4713
+void cpu_6502_AND_izy(255,5005
+void cpu_6502_AND_zpx(261,5135
+void cpu_6502_ROL_zpx(267,5265
+void cpu_6502_SEC_imp(273,5395
+void cpu_6502_AND_aby(278,5489
+void cpu_6502_AND_abx(284,5619
+void cpu_6502_ROL_abx(290,5749
+void cpu_6502_RTI_imp(296,5879
+void cpu_6502_EOR_izx(307,6163
+void cpu_6502_EOR_zp(313,6293
+void cpu_6502_LSR_zp(319,6421
+void cpu_6502_PHA_imp(325,6549
+void cpu_6502_EOR_imm(330,6725
+void cpu_6502_LSR_imp(336,6855
+void cpu_6502_JMP_abs(341,6948
+void cpu_6502_EOR_abs(354,7209
+void cpu_6502_LSR_abs(360,7339
+void cpu_6502_BVC_rel(366,7469
+void cpu_6502_EOR_izy(378,7761
+void cpu_6502_EOR_zpx(384,7891
+void cpu_6502_LSR_zpx(390,8021
+void cpu_6502_CLI_imp(396,8151
+void cpu_6502_EOR_aby(401,8247
+void cpu_6502_EOR_abx(407,8377
+void cpu_6502_LSR_abx(413,8507
+void cpu_6502_RTS_imp(419,8637
+void cpu_6502_ADC_izx(428,8865
+void cpu_6502_ADC_zp(434,8995
+void cpu_6502_ROR_zp(440,9123
+void cpu_6502_PLA_imp(446,9251
+void cpu_6502_ADC_imm(453,9431
+void cpu_6502_ROR_imp(459,9561
+void cpu_6502_JMP_ind(464,9654
+void cpu_6502_ADC_abs(471,9904
+void cpu_6502_ROR_abs(477,10034
+void cpu_6502_BVS_rel(483,10164
+void cpu_6502_ADC_izy(495,10456
+void cpu_6502_ADC_zpx(501,10586
+void cpu_6502_ROR_zpx(507,10716
+void cpu_6502_SEI_imp(513,10846
+void cpu_6502_ADC_aby(516,10938
+void cpu_6502_ADC_abx(522,11068
+void cpu_6502_ROR_abx(528,11198
+void cpu_6502_STA_izx(534,11328
+void cpu_6502_STY_zp(540,11458
+void cpu_6502_STA_zp(546,11586
+void cpu_6502_STX_zp(553,11761
+void cpu_6502_DEY_imp(559,11889
+void cpu_6502_TXA_imp(564,11982
+void cpu_6502_STY_abs(567,12085
+void cpu_6502_STA_abs(573,12215
+void cpu_6502_STX_abs(579,12345
+void cpu_6502_BCC_rel(585,12475
+void cpu_6502_STA_izy(597,12767
+void cpu_6502_STY_zpx(603,12897
+void cpu_6502_STA_zpx(609,13027
+void cpu_6502_STX_zpy(615,13157
+void cpu_6502_TYA_imp(621,13287
+void cpu_6502_STA_aby(624,13388
+void cpu_6502_TXS_imp(628,13516
+void cpu_6502_STA_abx(631,13615
+void cpu_6502_LDY_imm(637,13745
+void cpu_6502_LDA_izx(643,13875
+void cpu_6502_LDX_imm(649,14005
+void cpu_6502_LDY_zp(655,14135
+void cpu_6502_LDA_zp(661,14263
+void cpu_6502_LDX_zp(667,14391
+void cpu_6502_TAY_imp(673,14519
+void cpu_6502_LDA_imm(676,14621
+void cpu_6502_TAX_imp(682,14751
+void cpu_6502_LDY_abs(685,14853
+void cpu_6502_LDA_abs(691,14983
+void cpu_6502_LDX_abs(697,15113
+void cpu_6502_BCS_rel(703,15243
+void cpu_6502_LDA_izy(715,15535
+void cpu_6502_LDY_zpx(721,15665
+void cpu_6502_LDA_zpx(727,15795
+void cpu_6502_LDX_zpy(733,15925
+void cpu_6502_CLV_imp(739,16055
+void cpu_6502_LDA_aby(742,16147
+void cpu_6502_TSX_imp(748,16277
+void cpu_6502_LDY_abx(751,16377
+void cpu_6502_LDA_abx(757,16507
+void cpu_6502_LDX_aby(763,16637
+void cpu_6502_CPY_imm(769,16767
+void cpu_6502_CMP_izx(775,16897
+void cpu_6502_CPY_zp(781,17029
+void cpu_6502_CMP_zp(787,17157
+void cpu_6502_DEC_zp(793,17285
+void cpu_6502_INY_imp(799,17413
+void cpu_6502_CMP_imm(804,17506
+void cpu_6502_DEX_imp(810,17636
+void cpu_6502_CPY_abs(815,17729
+void cpu_6502_CMP_abs(821,17859
+void cpu_6502_DEC_abs(827,17989
+void cpu_6502_BNE_rel(833,18119
+void cpu_6502_CMP_izy(850,18432
+void cpu_6502_CMP_zpx(856,18562
+void cpu_6502_DEC_zpx(862,18692
+void cpu_6502_CLD_imp(868,18822
+void cpu_6502_CMP_aby(873,18918
+void cpu_6502_CMP_abx(879,19048
+void cpu_6502_DEC_abx(885,19178
+void cpu_6502_CPX_imm(891,19308
+void cpu_6502_SBC_izx(897,19438
+void cpu_6502_CPX_zp(903,19568
+void cpu_6502_SBC_zp(909,19696
+void cpu_6502_INC_zp(915,19824
+void cpu_6502_INX_imp(921,19952
+void cpu_6502_SBC_imm(926,20045
+void cpu_6502_NOP_imp(932,20175
+void cpu_6502_CPX_abs(935,20243
+void cpu_6502_SBC_abs(941,20373
+void cpu_6502_INC_abs(947,20503
+void cpu_6502_BEQ_rel(953,20633
+void cpu_6502_SBC_izy(965,20925
+void cpu_6502_SBC_zpx(971,21055
+void cpu_6502_INC_zpx(977,21185
+void cpu_6502_SED_imp(983,21315
+void cpu_6502_SBC_aby(989,21410
+void cpu_6502_SBC_abx(995,21540
+void cpu_6502_INC_abx(1001,21670
+
+src/memory/memory.c,202
+void init_memory(16,187
+char* ram(26,349
+char* basic_ROM(29,411
+char* kernel_ROM(33,480
+char* char_ROM(37,550
+char* IO_ram(41,618
+void read_memorydump(46,685
+void read_binary_memorydump(73,1469
+
+src/graphic/graphic-main.c,212
+static int keepParsing 25,354
+struct _vic* vic;36,492
+struct _6510_cpu cpu;38,511
+char memory[memory39,533
+char *randomptr randomptr41,559
+void intHandler(43,581
+void rnd_update(53,742
+int main(75,1288
+
+src/graphic/old_sld1.2.graphic.c,353
+int colortable[colortable43,458
+int colortable_WTF[colortable_WTF95,1148
+void init_display(148,1845
+void exit_display(163,2358
+void switch_flip(166,2403
+void DrawPixel(172,2498
+void dot(232,3994
+void draw_bitmap_memory(252,4421
+void clr_screen(285,5518
+SDL_Surface *sdl_init_display(sdl_init_display311,6075
+void sdl_exit_display(329,6523
+
+src/graphic/graphic.c,204
+int colortable[colortable42,475
+void init_display(78,993
+void sdl_init(106,1715
+void exit_display(136,2705
+void draw_bitmap_memory(142,2753
+void clr_screen(178,3718
+void sdl_exit_display(186,3845
+
+src/include/opcode_tbl.h,419
+struct opcode_entry 10,66
+  int opcode;11,88
+  int illegal;12,102
+  char *name;name13,117
+  char *adrmode;adrmode14,131
+  int bytes;15,148
+  int cycles;16,161
+  void (* const op_fct)18,178
+  char *mnemonic;mnemonic19,283
+  char *adrmode_descr;adrmode_descr20,301
+  char *flags;flags21,324
+  char *info;info22,339
+  char *action;action23,353
+  int (* const adrfct)24,369
+  char *logic;logic25,475
+
+src/include/register.h,24
+#define REG_WIDTH 7,44
+
+src/include/mu-code.h,35
+typedef struct _6510_cpu cpu;4,52
+
+src/include/alu-opcodes.h,485
+ #define  ALU_OP_ADD 4,21
+ #define  ALU_OP_ADC 5,48
+ #define  ALU_OP_SUB 6,75
+ #define  ALU_OP_SBC 7,102
+ #define  ALU_OP_AND 8,129
+ #define  ALU_OP_OR 9,156
+ #define  ALU_OP_XOR 10,183
+ #define  ALU_OP_NEG 11,210
+ #define  ALU_OP_NOT 12,237
+ #define  ALU_OP_ASL 13,264
+ #define  ALU_OP_LSR 14,291
+ #define  ALU_OP_ROL 15,318
+ #define  ALU_OP_ROR 16,345
+ #define  ALU_OP_CMP 17,372
+ #define  ALU_OP_INC 18,399
+ #define  ALU_OP_DEC 19,426
+ #define  ALU_OP_RESET 20,453
+
+src/include/cpu.h,372
+#define ADDR_WIDTH 7,38
+struct _6510_cpu 9,61
+  char pcl[pcl10,80
+  char pch[pch11,95
+  char regx[regx12,110
+  char regy[regy13,126
+  char rega[rega14,142
+  char flags[flags15,158
+  char sp[sp16,175
+  char abrl[abrl18,190
+  char abrh[abrh19,206
+  char dbr[dbr20,222
+  char ir[ir21,237
+  char rw;22,251
+  int interrupt;23,262
+  int cycles;24,279
+
+src/include/alu.h,27
+#define _ALU_HEADER_11,81
+
+src/include/graphic.h,467
+#define _SDLDRIVER_H_11,101
+struct _vic 15,169
+  unsigned int virtual_x_resolution;16,183
+  unsigned int virtual_y_resolution;17,220
+  unsigned int device_x_resolution;18,257
+  unsigned int device_y_resolution;19,293
+  unsigned int videobase 21,330
+  unsigned int x_stretch;22,357
+  unsigned int y_stretch;23,383
+  SDL_Window *window;window25,410
+  SDL_Renderer *render;render26,432
+  Uint32 *pixels;pixels28,457
+  SDL_Texture *texture;texture29,475
+
+src/include/flags.h,213
+#define SFLAG 7,36
+#define NFLAG 8,52
+#define VFLAG 9,68
+#define OFLAG 10,84
+#define XFLAG 11,100
+#define BFLAG 12,148
+#define DFLAG 13,164
+#define IFLAG 14,180
+#define ZFLAG 15,196
+#define CFLAG 16,212
+
+src/include/memory.h,192
+#define MEMORY_SIZE 6,19
+#define MEMORY_CELL_SIZE 7,74
+#define READ 8,129
+#define WRITE 9,146
+#define ADDR_WIDTH 10,164
+#define LORAM 12,187
+#define HIRAM 13,203
+#define CHAREN 14,219
+
+src/parser/vic-II.c,37
+int vic2_palette[vic2_palette10,66
+
+src/cpu/disassemble.c,37
+int dis(15,255
+int dis_mem(59,2322
+
+src/cpu/mu-code.c,5999
+int sp2int(10,132
+void eadr2adr(14,230
+int imp_adr_mode(23,370
+int imm_adr_mode(27,446
+int rel_adr_mode(32,564
+int izx_adr_mode(37,699
+int izy_adr_mode(49,1113
+int zp_adr_mode(64,1526
+int zpx_adr_mode(71,1686
+int zpy_adr_mode(77,1876
+int abs_adr_mode(83,2066
+int abx_adr_mode(92,2308
+int aby_adr_mode(96,2470
+int ind_adr_mode(100,2633
+void zsflag(104,2710
+void cpu_6502_illegal(118,2923
+void do_ADC(122,2993
+void do_AND(125,3100
+void do_ASL(128,3207
+void do_BIT(132,3358
+void do_CMP(155,3909
+void do_CPX(159,4042
+void do_CPY(163,4175
+void do_DEC(167,4308
+void do_EOR(172,4441
+void do_INC(176,4565
+void do_JMP(180,4679
+void do_LDA(184,4790
+void do_LDX(188,4890
+void do_LDY(192,4990
+void do_LSR(196,5090
+void do_ORA(199,5186
+void do_ROL(203,5294
+void do_ROR(206,5389
+void do_SBC(210,5485
+void do_STA(213,5592
+void do_STX(216,5672
+void do_STY(219,5752
+void cpu_6502_BRK_imp(246,6430
+void cpu_6502_ORA_izx(276,7114
+void cpu_6502_ORA_zp(301,7590
+void cpu_6502_ASL_zp(327,8106
+void cpu_6502_PHP_imp(351,8542
+void cpu_6502_ORA_imm(376,9071
+void cpu_6502_ASL_imp(402,9585
+void cpu_6502_ORA_abs(419,9844
+void cpu_6502_ASL_abs(437,10140
+void cpu_6502_BPL_rel(460,10573
+void cpu_6502_ORA_izy(491,11228
+void cpu_6502_ORA_zpx(516,11719
+void cpu_6502_ASL_zpx(542,12252
+void cpu_6502_CLC_imp(565,12636
+void cpu_6502_ORA_aby(590,13094
+void cpu_6502_ORA_abx(615,13585
+void cpu_6502_ASL_abx(641,14118
+void cpu_6502_JSR_abs(669,14694
+void cpu_6502_AND_izx(717,15777
+void cpu_6502_BIT_zp(743,16284
+void cpu_6502_AND_zp(768,16759
+void cpu_6502_ROL_zp(796,17334
+void cpu_6502_PLP_imp(820,17773
+void cpu_6502_AND_imm(848,18410
+void cpu_6502_ROL_imp(876,18983
+void cpu_6502_BIT_abs(901,19452
+void cpu_6502_AND_abs(926,19930
+void cpu_6502_ROL_abs(954,20508
+void cpu_6502_BMI_rel(977,20940
+void cpu_6502_AND_izy(1008,21596
+void cpu_6502_AND_zpx(1033,22088
+void cpu_6502_ROL_zpx(1061,22680
+void cpu_6502_SEC_imp(1084,23062
+void cpu_6502_AND_aby(1108,23518
+void cpu_6502_AND_abx(1133,24010
+void cpu_6502_ROL_abx(1161,24602
+void cpu_6502_RTI_imp(1190,25212
+void cpu_6502_interrupt(1200,25550
+void cpu_6502_EOR_izx(1227,26303
+void cpu_6502_EOR_zp(1252,26793
+void cpu_6502_LSR_zp(1278,27305
+void cpu_6502_PHA_imp(1302,27731
+void cpu_6502_EOR_imm(1327,28273
+void cpu_6502_LSR_imp(1353,28783
+void cpu_6502_JMP_abs(1375,29132
+void cpu_6502_EOR_abs(1407,29754
+void cpu_6502_LSR_abs(1433,30269
+void cpu_6502_BVC_rel(1456,30695
+void cpu_6502_EOR_izy(1487,31364
+void cpu_6502_EOR_zpx(1512,31869
+void cpu_6502_LSR_zpx(1538,32398
+void cpu_6502_CLI_imp(1561,32794
+void cpu_6502_EOR_aby(1585,33265
+void cpu_6502_EOR_abx(1610,33770
+void cpu_6502_LSR_abx(1636,34272
+void cpu_6502_RTS_imp(1663,34815
+void cpu_6502_ADC_izx(1698,35686
+void cpu_6502_ADC_zp(1730,36422
+void cpu_6502_ROR_zp(1758,37023
+void cpu_6502_PLA_imp(1784,37520
+void cpu_6502_ADC_imm(1817,38384
+void cpu_6502_ROR_imp(1845,38983
+void cpu_6502_JMP_ind(1867,39343
+void cpu_6502_ADC_abs(1900,40214
+void cpu_6502_ROR_abs(1928,40818
+void cpu_6502_BVS_rel(1951,41242
+void cpu_6502_ADC_izy(1989,42171
+void cpu_6502_ADC_zpx(2021,42936
+void cpu_6502_ROR_zpx(2049,43554
+void cpu_6502_SEI_imp(2072,43948
+void cpu_6502_ADC_aby(2101,44675
+void cpu_6502_ADC_abx(2133,45440
+void cpu_6502_ROR_abx(2161,46058
+void cpu_6502_STA_izx(2184,46473
+void cpu_6502_STY_zp(2207,46860
+void cpu_6502_STA_zp(2230,47254
+void cpu_6502_STX_zp(2254,47686
+void cpu_6502_DEY_imp(2279,48150
+void cpu_6502_TXA_imp(2303,48578
+void cpu_6502_STY_abs(2324,48966
+void cpu_6502_STA_abs(2347,49363
+void cpu_6502_STX_abs(2370,49751
+void cpu_6502_BCC_rel(2393,50174
+void cpu_6502_STA_izy(2422,50749
+void cpu_6502_STY_zpx(2445,51151
+void cpu_6502_STA_zpx(2468,51562
+void cpu_6502_STX_zpy(2491,51964
+void cpu_6502_TYA_imp(2512,52316
+void cpu_6502_STA_aby(2533,52724
+void cpu_6502_TXS_imp(2554,53121
+void cpu_6502_STA_abx(2574,53501
+void cpu_6502_LDY_imm(2599,53959
+void cpu_6502_LDA_izx(2624,54442
+void cpu_6502_LDX_imm(2649,54894
+void cpu_6502_LDY_zp(2674,55347
+void cpu_6502_LDA_zp(2699,55809
+void cpu_6502_LDX_zp(2724,56254
+void cpu_6502_TAY_imp(2749,56717
+void cpu_6502_LDA_imm(2772,57184
+void cpu_6502_TAX_imp(2797,57649
+void cpu_6502_LDY_abs(2820,58101
+void cpu_6502_LDA_abs(2845,58566
+void cpu_6502_LDX_abs(2870,59014
+void cpu_6502_BCS_rel(2893,59435
+void cpu_6502_LDA_izy(2924,60078
+void cpu_6502_LDY_zpx(2949,60546
+void cpu_6502_LDA_zpx(2974,61025
+void cpu_6502_LDX_zpy(2999,61487
+void cpu_6502_CLV_imp(3022,61874
+void cpu_6502_LDA_aby(3044,62315
+void cpu_6502_TSX_imp(3069,62783
+void cpu_6502_LDY_abx(3092,63247
+void cpu_6502_LDA_abx(3117,63726
+void cpu_6502_LDX_aby(3142,64188
+void cpu_6502_CPY_imm(3168,64697
+void cpu_6502_CMP_izx(3194,65232
+void cpu_6502_CPY_zp(3220,65736
+void cpu_6502_CMP_zp(3246,66250
+void cpu_6502_DEC_zp(3271,66723
+void cpu_6502_INY_imp(3296,67187
+void cpu_6502_CMP_imm(3321,67671
+void cpu_6502_DEX_imp(3346,68137
+void cpu_6502_CPY_abs(3371,68605
+void cpu_6502_CMP_abs(3397,69122
+void cpu_6502_DEC_abs(3422,69598
+void cpu_6502_BNE_rel(3445,70032
+void cpu_6502_CMP_izy(3482,70748
+void cpu_6502_CMP_zpx(3508,71279
+void cpu_6502_DEC_zpx(3533,71769
+void cpu_6502_CLD_imp(3556,72155
+void cpu_6502_CMP_aby(3581,72652
+void cpu_6502_CMP_abx(3607,73183
+void cpu_6502_DEC_abx(3632,73673
+void cpu_6502_CPX_imm(3658,74182
+void cpu_6502_SBC_izx(3690,74977
+void cpu_6502_CPX_zp(3716,75481
+void cpu_6502_SBC_zp(3748,76255
+void cpu_6502_INC_zp(3773,76728
+void cpu_6502_INX_imp(3798,77192
+void cpu_6502_SBC_imm(3829,77936
+void cpu_6502_NOP_imp(3852,78317
+void cpu_6502_CPX_abs(3875,78760
+void cpu_6502_SBC_abs(3907,79537
+void cpu_6502_INC_abs(3932,80013
+void cpu_6502_BEQ_rel(3955,80441
+void cpu_6502_SBC_izy(3993,81396
+void cpu_6502_SBC_zpx(4025,82187
+void cpu_6502_INC_zpx(4050,82677
+void cpu_6502_SED_imp(4073,83061
+void cpu_6502_SBC_aby(4105,83817
+void cpu_6502_SBC_abx(4137,84608
+void cpu_6502_INC_abx(4162,85098
+
+src/cpu/parser.c,1092
+#define MAX_CMD 28,386
+int mem_pager_adr 30,406
+int mem_pager_rows 31,429
+int mem_pager_cols 32,453
+static char *line_read line_read35,525
+char *rl_gets rl_gets39,638
+char * read_line(60,1056
+int ls_cmd(72,1261
+int until_cmd(86,1692
+int quit_cmd(102,2009
+#define ACC 110,2155
+#define ABRL 111,2169
+#define ABRH 112,2184
+#define DBR 113,2199
+#define IDX 114,2213
+#define IDY 115,2227
+#define PCL 116,2241
+#define PCH 117,2255
+#define IR 118,2269
+#define SP 119,2282
+char *names[names121,2296
+int registers_cmp(122,2384
+int registers_cmd(137,2657
+int memory_cmp(215,4082
+int memory_cmd(221,4245
+int step_cmp(249,4857
+int step_cmd(256,5020
+int execute_cmd(275,5588
+int load_cmd(288,5969
+int dis_cmd(298,6236
+int go_cmd(308,6470
+struct map 330,7288
+  int (*eval_fctptr)eval_fctptr331,7301
+  char cmd[cmd332,7379
+  int (*cmp_fctptr)cmp_fctptr333,7396
+struct map ptable[ptable336,7457
+int parse_line(350,7915
+int set_cmp(368,8568
+void* var_tbl[var_tbl375,8708
+int set_name_cmp(381,8887
+char* parse_6502_register_name(393,9086
+void set_cmd(420,9517
+
+src/cpu/cpu.c,218
+void access_memory(17,215
+int pc2int(54,1126
+void inc_pc(58,1245
+void dec_pc(80,1571
+int fetch(104,1863
+int exec(122,2257
+void fetch_exec_step(141,2735
+void reset_cpu(147,2848
+void cpu_6502_interrupt(168,3397
+
+src/cpu/opcode_tbl.c,126
+struct opcode_entry* operation_lookup(9,142
+struct opcode_entry opcode_tbl[opcode_tbl13,235
+int illegal[illegal272,97029
+
+src/cpu/cpu-main.c,73
+struct _6510_cpu cpu;11,128
+char memory[memory12,150
+int main(20,273
+
+src/alu/register.c,210
+void ldhex2regnibble(14,145
+int conv_bitstr2int(125,2206
+int word2int(137,2445
+int s2int(149,2682
+void ldhex2register(163,2936
+void int2register(182,3360
+void cp_register(194,3525
+void cp_byte(201,3636
+
+src/alu/alu-main.c,207
+#define _GNU_SOURCE17,460
+char rega[rega29,642
+char regb[regb30,679
+char accumulator[accumulator31,716
+char flags[flags32,760
+void alu_parse_line(39,904
+void print_alu(104,2813
+int main(129,3550
+
+src/alu/flags.c,493
+void clearCarryflag(10,88
+void setCarryflag(13,147
+char getCarryflag(16,204
+void clearZeroflag(19,262
+void setZeroflag(22,320
+char getZeroflag(25,376
+void clearIRQflag(28,433
+void setIRQflag(31,490
+char getIRQflag(34,545
+void clearDflag(37,601
+void setDflag(40,656
+char getDflag(43,709
+char getBRKflag(52,911
+void clearOverflowflag(55,970
+void setOverflowflag(58,1032
+char getOverflowflag(61,1092
+void clearSignflag(64,1153
+void setSignflag(67,1211
+char getSignflag(70,1267
+
+src/alu/alu.student.c,722
+int const max_mue_memory 21,303
+char mue_memory[mue_memory28,459
+char* m 29,543
+unsigned int c 30,565
+unsigned int s 31,608
+void clearCarryflag(33,649
+void setCarryflag(36,692
+void clearSignflag(39,733
+void setSignflag(42,775
+void clearZeroflag(45,815
+void setZeroflag(48,857
+void clearOverflowflag(51,897
+void setOverflowflag(54,943
+int zero_test(62,1096
+void halfadder(70,1261
+void adder(80,1520
+void one_complement(87,1642
+void two_complement(138,3093
+void op_add(149,3376
+void op_sub(160,3646
+void op_and(171,3922
+void op_or(182,4195
+void op_xor(193,4469
+void op_not_a(202,4570
+void op_not_b(208,4656
+void op_neg_a(217,4748
+void op_neg_b(225,4839
+void op_reset(233,4987
+void alu(251,5339
+
+src/alu/alu.c,863
+int const max_mue_memory 27,877
+char mue_memory[mue_memory29,910
+char* m 30,994
+unsigned int c 32,1017
+unsigned int s 33,1065
+unsigned int c_in 34,1116
+void apply_zero_flag(41,1268
+void  apply_overflow_flag(53,1478
+void zsflagging(67,1774
+void half_adder(78,2014
+void mu_memory_reset(101,2407
+void full_adder(114,2697
+void one_complement(127,2953
+void two_complement(140,3173
+void alu_op_ADD(160,3578
+void alu_op_ADC(208,4731
+void alu_op_SBC(278,6389
+void alu_op_INC(306,7074
+void alu_op_DEC(335,7559
+void alu_op_AND(370,8341
+void alu_op_OR(406,9071
+void alu_op_XOR(435,9645
+void alu_op_ASL(479,10847
+void alu_op_ROL(528,12074
+void alu_op_LSR(568,12951
+void alu_op_ROR(617,14187
+void alu_op_NEG(634,14462
+void alu_op_NOT(637,14542
+void alu_op_SUB(639,14621
+void alu_op_CMP(671,15364
+void alu_op_RESET(692,16013
+void alu(729,16712
+
+src/printers/print-cpu.c,160
+void print_stack(22,227
+void print_memory_page0(30,466
+void print_dis_memory(43,808
+void printm(65,1297
+void print_cpu(78,1814
+void print_cpu_dis(99,2318
+
+src/cpu/disassemble.h,0
+
+src/parser/parser.c,0
+
+src/include/print-cpu.h,0
+
+src/include/disassemble.h,0

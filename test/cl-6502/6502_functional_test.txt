@@ -1,0 +1,15 @@
+
+./graphic --binary <binary file>  <load startadresse>
+./graphic --binary test.bin  000a
+test.bin is a copy from /home/olivier/lisp/lisp/quicklisp/dists/quicklisp/software/cl-6502-20150923-git/tests/
+set pc to 0x1000 (go 1000) and start till reaches a endless loop at 0xece7 with jmp 0xece7
+read source code 6502_functional_test.a65 for more
+
+$ echo -e "go 1000\nstep 40000000\nquit\n" | ./graphic --binary test/cl-6502/test.bin  000a | tail
+
+AC XR YR SP NV-BDIZC         
+00 58 ff ff 01-10011 3c37  4c 37 3c  JMP $3c37    
+AC XR YR SP NV-BDIZC         
+00 58 ff ff 01-10011 3c37  4c 37 3c  JMP $3c37    
+AC XR YR SP NV-BDIZC         
+00 58 ff ff 01-10011 3c37  4c 37 3c  JMP $3c37    
