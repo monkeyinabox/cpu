@@ -228,8 +228,7 @@ int abs_adr_mode(struct _6510_cpu* cpu, char memory[][9] ){
 
 // absolute with index x
 int abx_adr_mode(struct _6510_cpu* cpu, char memory[][9] ){
-/*  char dummy[] = "00000000";
-  char zero[] = "00000000";
+  char dummy[] = "00000000";
 
   cp_byte(cpu->pcl, cpu->abrl);
   cp_byte(cpu->pch, cpu->abrh);
@@ -237,35 +236,29 @@ int abx_adr_mode(struct _6510_cpu* cpu, char memory[][9] ){
   cpu->rw='1';
   access_memory(cpu, memory);
 
-  alu(ALU_OP_ADD, cpu->dbr, cpu->regx, cpu->dbr, 0);
-
-  cp_byte(cpu->dbr, cpu->abrl);
-  cp_byte(zero, cpu->abrh);
-
-  cpu->rw='1';
-  access_memory(cpu, memory);
-
   cp_byte(cpu->dbr, dummy);
-  alu(ALU_OP_ADD, "00000001", cpu->dbr, cpu->dbr, 0); 
-
-  cp_byte(cpu->dbr, cpu->abrl);
-  cp_byte(zero, cpu->abrh);
-
-  cpu->rw='1';
-  access_memory(cpu, memory);
-
-  cp_byte(cpu->dbr, cpu->abrl);
-  cp_byte(dummy, cpu->abrh);
-
+  
   inc_pc(cpu);
 
-  return conv_bitstr2int(cpu->dbr,0,7);*/
+  cp_byte(cpu->pcl, cpu->abrl);
+  cp_byte(cpu->pch, cpu->abrh);
+
+  access_memory(cpu, memory);
+  inc_pc(cpu);
+  
+  cp_byte(cpu->dbr, cpu->abrl);
+  cp_byte(dummy, cpu->abrh);
+  
+  alu(ALU_OP_ADD, cpu->abrl, cpu->regx, cpu->abrl, 0);
+  cpu->rw='1';
+  access_memory(cpu, memory);
+
+return conv_bitstr2int(cpu->dbr,0,7);
 }
 
 // absolute with index y
 int aby_adr_mode(struct _6510_cpu* cpu, char memory[][9] ){
-/*  char dummy[] = "00000000";
-  char zero[] = "00000000";
+  char dummy[] = "00000000";
 
   cp_byte(cpu->pcl, cpu->abrl);
   cp_byte(cpu->pch, cpu->abrh);
@@ -273,30 +266,24 @@ int aby_adr_mode(struct _6510_cpu* cpu, char memory[][9] ){
   cpu->rw='1';
   access_memory(cpu, memory);
 
-  cp_byte(cpu->pcl, cpu->abrl);
-  cp_byte(zero, cpu->abrh);
-
-  cpu->rw='1';
-  access_memory(cpu, memory);
-  
   cp_byte(cpu->dbr, dummy);
-  alu(ALU_OP_ADD, "00000001", cpu->dbr, cpu->dbr, 0); 
-  
-  cp_byte(cpu->dbr, cpu->abrl);
-  cp_byte(zero, cpu->abrh);
-
-  cpu->rw='1';
-  access_memory(cpu, memory);
-
-  
-  alu(ALU_OP_ADD, cpu->dbr, cpu->regy, cpu->dbr, 0); 
-  
-  cp_byte(cpu->dbr, cpu->abrl);
-  cp_byte(dummy, cpu->abrh);
 
   inc_pc(cpu);
 
-  return conv_bitstr2int(cpu->dbr,0,7); */
+  cp_byte(cpu->pcl, cpu->abrl);
+  cp_byte(cpu->pch, cpu->abrh);
+
+  access_memory(cpu, memory);
+  inc_pc(cpu);
+
+  cp_byte(cpu->dbr, cpu->abrl);
+  cp_byte(dummy, cpu->abrh);
+
+  alu(ALU_OP_ADD, cpu->abrl, cpu->regy, cpu->abrl, 0);
+  cpu->rw='1';
+  access_memory(cpu, memory);
+
+return conv_bitstr2int(cpu->dbr,0,7);
 } 
 
 // dummy, not used
