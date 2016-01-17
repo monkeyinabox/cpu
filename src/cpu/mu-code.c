@@ -34,19 +34,14 @@ int imp_adr_mode(struct _6510_cpu* cpu, char memory[][9] ){
 // immediate
 int imm_adr_mode(struct _6510_cpu* cpu, char memory[][9] ){
 
-  cp_byte(cpu->pcl, cpu->abrl);
-  cp_byte(cpu->pch, cpu->abrh);
-
-  cpu->rw='1';
-  access_memory(cpu, memory);
-
+  int pc = pc2int(cpu);
   inc_pc(cpu);
-  return conv_bitstr2int(cpu->dbr,0,7);
-} 
+  return ( conv_bitstr2int(memory[pc+1],0,7) << 8) | conv_bitstr2int(memory[pc],0,7) ;
+}
 
 // relative
 int rel_adr_mode(struct _6510_cpu* cpu, char memory[][9] ){
-
+/**
   cp_byte(cpu->pcl, cpu->abrl);
   cp_byte(cpu->pch, cpu->abrh);
 
@@ -54,17 +49,27 @@ int rel_adr_mode(struct _6510_cpu* cpu, char memory[][9] ){
   access_memory(cpu, memory);
  
   alu(ALU_OP_ADD, cpu->dbr, cpu->pcl, cpu->dbr, 0); 
-  /**
-  strcpy(dummy, cpu->pcl);
-  strcat(dummy, cpu->pch);
-  */
+  
+  //strcpy(dummy, cpu->pcl);
+  //strcat(dummy, cpu->pch);
+  
   return conv_bitstr2int(cpu->dbr,0,15);
-
+*/
+    int pc = pc2int(cpu);
+    int pcData =  conv_bitstr2int(memory[pc],0,7) ;
+    int iadr;
+    if(pcData > 127){
+      pcData = pcData - 256; 
+      return pc + pcData + 1; 
+    }
+    else{
+      return pc + pcData + 1; 
+    }
 }
 
 // indirect X-indexed zero page
 int izx_adr_mode(struct _6510_cpu* cpu, char memory[][9] ){
-  
+ /** 
   char dummy[] = "00000000";
   char zero[] = "00000000";
 
@@ -89,19 +94,23 @@ int izx_adr_mode(struct _6510_cpu* cpu, char memory[][9] ){
   cpu->rw='1';
   access_memory(cpu, memory);
 
-
   alu(ALU_OP_ADD, cpu->dbr, cpu->regy, cpu->dbr, 0);
 
   cp_byte(cpu->dbr, cpu->abrl);
   cp_byte(dummy, cpu->abrh);
 
   return conv_bitstr2int(cpu->dbr,0,7);
+*/
+    int pc = pc2int(cpu);
+    inc_pc(cpu);
+    int pcData =  conv_bitstr2int(memory[pc],0,7) ;
+    return ( conv_bitstr2int(memory[pcData + 1],0,7) << 8) | (conv_bitstr2int(memory[pcData],0,7) + conv_bitstr2int(cpu->regx,0,7)) ;
 
 }
 
 // indirect Y-indexed zero page
 int izy_adr_mode(struct _6510_cpu* cpu, char memory[][9] ){
-  char dummy[] = "00000000";
+/**  char dummy[] = "00000000";
   char zero[] = "00000000";
 
   cp_byte(cpu->pcl, cpu->abrl);
@@ -132,7 +141,11 @@ int izy_adr_mode(struct _6510_cpu* cpu, char memory[][9] ){
   cp_byte(dummy, cpu->abrh);
 
   return conv_bitstr2int(cpu->dbr,0,7);
-
+*/
+  int pc = pc2int(cpu);
+  inc_pc(cpu);
+  int pcData =  conv_bitstr2int(memory[pc],0,7) ;
+  return ( conv_bitstr2int(memory[pcData + 1],0,7) << 8) | ( conv_bitstr2int(memory[pcData],0,7) + conv_bitstr2int(cpu->regy,0,7)) ;
 }
 
 // zero page 
@@ -158,7 +171,7 @@ int zp_adr_mode(struct _6510_cpu* cpu, char memory[][9] ){
 // zero page with index register X
 int zpx_adr_mode(struct _6510_cpu* cpu, char memory[][9] ){
  
-  char zero[]="00000000";
+  char zero[9]="00000000";
  
   cp_byte(cpu->pcl, cpu->abrl);
   cp_byte(cpu->pch, cpu->abrh);
@@ -200,35 +213,15 @@ int zpy_adr_mode(struct _6510_cpu* cpu, char memory[][9] ){
 
 // absolute 
 int abs_adr_mode(struct _6510_cpu* cpu, char memory[][9] ){
-  char dummy[] = "00000000";
-
-  cp_byte(cpu->pcl, cpu->abrl);
-  cp_byte(cpu->pch, cpu->abrh);
-
-  cpu->rw='1';
-  access_memory(cpu, memory);
-
-  cp_byte(cpu->dbr, dummy);
-  
+  int pc = pc2int(cpu);
   inc_pc(cpu);
-
-  cp_byte(cpu->pcl, cpu->abrl);
-  cp_byte(cpu->pch, cpu->abrh);
-
-  access_memory(cpu, memory);
   inc_pc(cpu);
-
-  cp_byte(cpu->dbr, cpu->abrl);
-  cp_byte(dummy, cpu->abrl);
-  cpu->rw='1';
-  access_memory(cpu, memory);
-
-  return conv_bitstr2int(cpu->dbr,0,7);
+  return ( conv_bitstr2int(memory[pc + 1],0,7) << 8) | ( conv_bitstr2int(memory[pc],0,7) + conv_bitstr2int(cpu->regy,0,7)) ;
 }
 
 // absolute with index x
 int abx_adr_mode(struct _6510_cpu* cpu, char memory[][9] ){
-  char dummy[] = "00000000";
+/*  char dummy[] = "00000000";
 
   cp_byte(cpu->pcl, cpu->abrl);
   cp_byte(cpu->pch, cpu->abrh);
@@ -252,13 +245,20 @@ int abx_adr_mode(struct _6510_cpu* cpu, char memory[][9] ){
   alu(ALU_OP_ADD, cpu->abrl, cpu->regx, cpu->abrl, 0);
   cpu->rw='1';
   access_memory(cpu, memory);
-
+// Need to return 16Bit
 return conv_bitstr2int(cpu->dbr,0,7);
+*/
+
+    int pc = pc2int(cpu);
+    inc_pc(cpu);
+    inc_pc(cpu);
+    return ( conv_bitstr2int(memory[pc + 1],0,7) << 8) | (conv_bitstr2int(memory[pc],0,7) + conv_bitstr2int(cpu->regx,0,7)) ;
+
 }
 
 // absolute with index y
 int aby_adr_mode(struct _6510_cpu* cpu, char memory[][9] ){
-  char dummy[] = "00000000";
+/**  char dummy[] = "00000000";
 
   cp_byte(cpu->pcl, cpu->abrl);
   cp_byte(cpu->pch, cpu->abrh);
@@ -283,7 +283,15 @@ int aby_adr_mode(struct _6510_cpu* cpu, char memory[][9] ){
   cpu->rw='1';
   access_memory(cpu, memory);
 
+// Need to return 16Bit
 return conv_bitstr2int(cpu->dbr,0,7);
+*/
+    int pc = pc2int(cpu);
+    inc_pc(cpu);
+    inc_pc(cpu);
+    return ( conv_bitstr2int(memory[pc + 1],0,7) << 8) | (conv_bitstr2int(memory[pc],0,7) + conv_bitstr2int(cpu->regy,0,7)) ;
+
+
 } 
 
 // dummy, not used
@@ -294,7 +302,6 @@ int ind_adr_mode(struct _6510_cpu* cpu, char memory[][9] ){
 void zsflag(struct _6510_cpu* cpu, char* mem){
   int i;
   cpu->flags[SFLAG] = mem[0];
-
   cpu->flags[ZFLAG] = '1';
   for(i=0;i<8;i++){
     if(mem[i]=='1'){
@@ -800,9 +807,45 @@ void cpu_6502_ASL_abx(struct _6510_cpu* cpu, char mem[][9]){
 */
 
 void cpu_6502_JSR_abs(struct _6510_cpu* cpu, char mem[][9]){
-  int eadr = abs_adr_mode(cpu, mem);
-  cp_byte(cpu->pcl, cpu->sp);
-  cp_byte(mem[eadr], cpu->pcl); 
+/**
+  int sp = sp2int(cpu);
+  //int eadr = abs_adr_mode(cpu, mem);
+
+  char dummy[] = "00000000";
+
+  cp_register(cpu->pcl, cpu->abrl);
+  cp_register(cpu->pch, cpu->abrh);
+
+  cpu->rw='1';
+  access_memory(cpu, mem);
+
+  cp_register(cpu->dbr, dummy);
+
+  cp_register(cpu->pcl, mem[sp--]);
+  cp_register(cpu->pch, mem[sp]);
+
+  alu(ALU_OP_SUB, cpu->sp, "00000010", cpu->sp, 0);
+
+  cp_register(cpu->pcl, cpu->abrl);
+  cp_register(cpu->pch, cpu->abrh);
+
+  cpu->rw='1';
+  access_memory(cpu, mem);
+
+  cp_register(cpu->dbr, cpu->pcl);
+  cp_register(dummy, cpu->pch);
+  */
+ int eadr = abs_adr_mode(cpu,mem);
+ int sp = sp2int(cpu); 
+ char adr[] = "0000000000000000";
+ eadr2adr(eadr,adr);
+
+ cp_register(cpu->pch, mem[sp--]);
+ cp_register(cpu->pcl, mem[sp]);
+ alu(ALU_OP_SUB, cpu->sp, "00000010", cpu->sp, 0);
+
+ cp_byte(adr, cpu->pch);
+ cp_byte(&(adr[8]), cpu->pcl);
 }
 
 
@@ -1431,10 +1474,29 @@ void cpu_6502_LSR_imp(struct _6510_cpu* cpu, char mem[][9]){
 */
 
 void cpu_6502_JMP_abs(struct _6510_cpu* cpu, char mem[][9]){
-  int eadr = abs_adr_mode(cpu, mem);
+ // int eadr = abs_adr_mode(cpu, mem);
+ // cp_byte(mem[eadr], cpu->pcl);
+
+  char _tmp[] = "00000000";
   
-  cp_byte(mem[eadr], cpu->pcl);
- 
+  cp_byte(cpu->pcl, cpu->abrl);
+  cp_byte(cpu->pch, cpu->abrh);
+
+  cpu->rw='1';
+  access_memory(cpu, mem);
+  cp_byte(cpu->dbr, _tmp);
+  
+  inc_pc(cpu);
+  
+  cp_byte(cpu->pcl, cpu->abrl);
+  cp_byte(cpu->pch, cpu->abrh);
+
+  cpu->rw='1';
+  access_memory(cpu, mem);
+
+  cp_register(_tmp, cpu->pcl);
+  cp_register(cpu->dbr, cpu->pch);
+  inc_pc(cpu); 
 }
 
 
@@ -2297,7 +2359,6 @@ void cpu_6502_DEY_imp(struct _6510_cpu* cpu, char mem[][9]){
 
 void cpu_6502_TXA_imp(struct _6510_cpu* cpu, char mem[][9]){  
   cp_register(cpu->regx, cpu->rega);
-  inc_pc(cpu);	
 }
 
 
